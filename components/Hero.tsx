@@ -2,12 +2,13 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { playMusic } from './MusicPlayer';
 
 const Hero = () => {
   const handleScroll = () => {
-    // Jalankan musik saat tombol diklik
-    if (playMusic) playMusic();
+    // Panggil fungsi langsung dari window
+    if (typeof window !== 'undefined' && window.playMusic) {
+        window.playMusic();
+    }
 
     window.scrollTo({
       top: window.innerHeight,

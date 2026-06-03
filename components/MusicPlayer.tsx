@@ -2,14 +2,25 @@
 import { useState, useRef, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
+declare global {
+  interface Window {
+    playMusic: () => void;
+  }
+}
+
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Musik disinkronkan dengan file lokal di /public/assets/music.mp3
     audioRef.current = new Audio('/assets/music.mp3');
     audioRef.current.loop = true;
+
+    // Simpan fungsi ke objek window agar bisa diakses global
+    window.playMusic = () => {
+      audioRef.current?.play().catch(e => console.error("Autoplay prevented", e));
+      setIsPlaying(true);
+    };
   }, []);
 
   const toggleMusic = () => {
