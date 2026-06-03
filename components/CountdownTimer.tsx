@@ -1,4 +1,7 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
+
 
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -32,12 +35,12 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className=\"py-12 bg-[#F5F0E8]\">
-      <div className=\"max-w-4xl mx-auto flex justify-center gap-4 text-center\">
+    <div className="py-12 bg-[#F5F0E8]">
+      <div className="max-w-4xl mx-auto flex justify-center gap-4 text-center">
         {Object.entries(timeLeft).map(([unit, value]) => (
-          <div key={unit} className=\"bg-white p-4 rounded-lg border border-[#C9A96E] min-w-[80px]\">
-            <div className=\"text-3xl font-serif text-[#C9A96E]\">{value.toString().padStart(2, '0')}</div>
-            <div className=\"text-xs uppercase tracking-widest text-zinc-600\">{unit}</div>
+          <div key={unit} className="bg-white p-4 rounded-lg border border-[#C9A96E] min-w-[80px]">
+            <div className="text-3xl font-serif text-[#C9A96E]">{value.toString().padStart(2, '0')}</div>
+            <div className="text-xs uppercase tracking-widest text-zinc-600">{unit}</div>
           </div>
         ))}
       </div>

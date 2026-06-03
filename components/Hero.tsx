@@ -1,13 +1,22 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
+const handleScroll = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <section className="relative h-[100dvh] flex flex-col items-center justify-center text-center text-white overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0 bg-black/40 z-0" />
       <img
-        src="/assets/hero-bg.jpg"
+        src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
         alt="Couple"
         className="absolute inset-0 w-full h-full object-cover z-[-1]"
       />
@@ -26,10 +35,11 @@ const Hero = () => {
 
       {/* CTA Button */}
       <motion.button
+        onClick={handleScroll}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="z-10 mt-12 px-8 py-3 border border-white/50 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all"
+        className="z-10 mt-12 px-8 py-3 border border-white/50 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all font-sans cursor-pointer"
       >
         Buka Undangan
       </motion.button>
